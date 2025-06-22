@@ -14,13 +14,48 @@
   <link href="./style.css" rel="stylesheet" />
 </head>
 
-<body class="bg-gray-100 min-h-screen flex flex-col items-center justify-center p-6">
-  <h1 class="text-3xl font-bold text-blue-600 mb-4">Login Firebase</h1>
-  <input id="email" type="email" placeholder="Email" class="mb-2 p-2 border rounded w-full max-w-sm" />
-  <input id="password" type="password" placeholder="Senha" class="mb-4 p-2 border rounded w-full max-w-sm" />
-  <button onclick="login()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Entrar</button>
-  <a href="register.html" class="mt-4 text-blue-500 underline">Criar uma conta</a>
-  <p id="user-info" class="mt-4 text-sm text-gray-700"></p>
+<body class="bg-[url('../assets/login_bg.svg')] bg-cover bg-center  flex flex-col">
+  
+  <div class="w-full backdrop-blur-sm py-6 text-white px-4 md:px-16 flex justify-between items-center mb-10">
+    <h1 class="text-4xl md:text-4xl font-bold">JOURNEY</h1>
+    <a href="register.html" class="text-base md:text-lg text-right">CADASTRE-SE</a>
+  </div>
+
+  <div class="relative px-4 md:px-16 py-4 min-h-screen flex justify-start items-center">
+
+    <div class="w-full max-w-5xl">
+      <img src="../assets/from.svg" alt="Ilustração" class="w-full object-cover" />
+    </div>
+
+    <div class="absolute right-0 md:right-16 top-[60%] md:top-1/2 transform -translate-y-1/2 bg-white rounded-lg border shadow-xl w-full max-w-sm">
+      <div class="flex flex-col gap-4 px-6 pt-6">
+        <div>
+          <label for="email" class="font-medium text-gray-800">Email</label>
+          <input id="email" type="email" placeholder="Digite seu email aqui." class="mt-2 p-2 border rounded-lg w-full" />
+        </div>
+        <div>
+          <label for="password" class="font-medium text-gray-800">Senha</label>
+          <input id="password" type="password" placeholder="E aqui sua senha!" class="mt-2 p-2 border rounded-lg w-full" />
+        </div>
+      </div>
+
+      <div class="px-6 mt-2">
+        <a href="#" class="text-sm text-gray-600 hover:underline">Esqueceu sua senha?</a>
+      </div>
+
+      <div class="px-6 mb-4">
+        <button onclick="login()" class="w-full bg-[#5BA26F] font-medium text-white px-4 mb-2 py-2 rounded-lg mt-5 hover:bg-gray-700">
+          Continuar
+        </button>
+      </div>
+
+      <div class="border-t">
+        <div class="p-4 text-sm text-center">
+          <p>Ainda não fez seu cadastro? <a href="register.html" class="underline mb-1">Cadastre-se aqui.</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>
