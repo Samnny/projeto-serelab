@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | Journey CBL</title>
+  <!-- Firebase CDN (Umd) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script defer src="./js/auth.js"></script>
+  <script defer src="./js/firestore.js"></script>
+  <link href="./style.css" rel="stylesheet" />
+</head>
+
+<body class="bg-gray-100 min-h-screen flex flex-col items-center justify-center p-6">
+  <h1 class="text-3xl font-bold text-blue-600 mb-4">Login Firebase</h1>
+  <input id="email" type="email" placeholder="Email" class="mb-2 p-2 border rounded w-full max-w-sm" />
+  <input id="password" type="password" placeholder="Senha" class="mb-4 p-2 border rounded w-full max-w-sm" />
+  <button onclick="login()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Entrar</button>
+  <a href="register.html" class="mt-4 text-blue-500 underline">Criar uma conta</a>
+  <p id="user-info" class="mt-4 text-sm text-gray-700"></p>
+</body>
+
+</html>
