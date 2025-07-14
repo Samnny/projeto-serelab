@@ -62,6 +62,7 @@ lib-cov/
 /backend/.idea/
 /backend/.vscode/
 /backend/out/
+backend/src/main/resources/serviceAccountKey.json
 
 # ========== EDITORES ==========
 .vscode/
