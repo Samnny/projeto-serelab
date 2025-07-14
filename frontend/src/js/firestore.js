@@ -7,6 +7,7 @@ function register() {
   const status = document.getElementById("cadastro-status");
 
   status.textContent = "";
+  status.className = "";
 
   const email = emailEl.value.trim();
   const senha = senhaEl.value.trim();
@@ -40,26 +41,61 @@ function register() {
     return;
   }
 
-  auth.createUserWithEmailAndPassword(email, senha)
-    .then((userCredential) => {
-      const uid = userCredential.user.uid;
+  // 1️⃣ Cadastrar no backend
+  fetch("http://localhost:8080/api/auth/register", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      email: email,
+      senha: senha,
+      apelido: apelido,
+      genero: genero,
+      pronome: pronome
+    })
+  })
+    .then(response => {
+      if (!response.ok) {
+        return response.json().then(err => {
+          throw new Error(err.error || "Erro ao registrar usuário.");
+        });
+      }
+      return response.json(); // contém uid ou mensagem
+    })
+    .then(data => {
+      console.log("Registrado no backend:", data);
 
-      return db.collection("usuarios").doc(uid).set({
-        id: uid,
-        email: email,
-        apelido: apelido,
-        genero: genero,
-        pronome: pronome,
-        premium: false,
-        criadoEm: firebase.firestore.Timestamp.now()
+      // 2️⃣ Fazer login com Firebase
+      return firebase.auth().signInWithEmailAndPassword(email, senha);
+    })
+    .then(userCredential => {
+      // 3️⃣ Obter token JWT
+      return userCredential.user.getIdToken();
+    })
+    .then(token => {
+      // 4️⃣ Verificar token com backend
+      return fetch("http://localhost:8080/api/auth/verify", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer " + token
+        }
       });
     })
-    .then(() => {
-      status.textContent = "Cadastro realizado com sucesso!";
-      status.className = "text-green-600 mt-4 text-sm";
-      setTimeout(() => window.location.href = "home.html", 1500);
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("Erro ao verificar token com o backend.");
+      }
+      return response.json();
     })
-    .catch((error) => {
+    .then(data => {
+      console.log("Usuário autenticado com sucesso:", data);
+      // ✅ Tudo certo: redirecionar
+      window.location.href = "home.html";
+    })
+    .catch(error => {
+      console.error("Erro no cadastro/login:", error);
       status.textContent = "Erro: " + error.message;
       status.className = "text-red-600 mt-4 text-sm";
     });

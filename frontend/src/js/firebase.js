@@ -1,14 +1,15 @@
 console.log("🔥 Firebase carregado!");
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBAm6k93OqfEdzXmJfitl0i-OkpXnnbfqY",
-  authDomain: "pocs-pi2.firebaseapp.com",
-  projectId: "pocs-pi2",
-  storageBucket: "pocs-pi2.appspot.com",
-  messagingSenderId: "817648047285",
-  appId: "1:817648047285:web:13c8d797351e1c55789afc",
-  measurementId: "G-EB4ZZL466N"
+  apiKey: "AIzaSyCHH7yNydLqIKxmRr-5m_WTUZ7r_Z3hk8Y",
+  authDomain: "journey-cbl.firebaseapp.com",
+  projectId: "journey-cbl",
+  storageBucket: "journey-cbl.firebasestorage.app",
+  messagingSenderId: "783910164513",
+  appId: "1:783910164513:web:877cdb1582b6881d88ab60",
+  measurementId: "G-7VZ6SLV104"
 };
+
 
 firebase.initializeApp(firebaseConfig);
 

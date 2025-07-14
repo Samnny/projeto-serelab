@@ -1,25 +1,39 @@
 function login() {
   const email = document.getElementById("email").value.trim();
-  const password = document.getElementById("password").value.trim();
-
+  const senha = document.getElementById("password").value.trim();
   const status = document.getElementById("login-status");
 
   status.textContent = "";
 
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!email || !emailRegex.test(email)) {
-    status.textContent = "Por favor, insira um e-mail válido.";
-    return;
-  }
-
-  if (!password || password.length < 6) {
-    status.textContent = "A senha deve ter pelo menos 6 caracteres.";
-    return;
-  }
-
-  auth.signInWithEmailAndPassword(email, password)
-    .then(() => window.location.href = "home.html")
-    .catch((err) => alert("Erro: " + err.message));
+  firebase.auth().signInWithEmailAndPassword(email, senha)
+    .then(userCredential => {
+      return userCredential.user.getIdToken();
+    })
+    .then(token => {
+      return fetch("http://localhost:8080/api/auth/verify", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer " + token
+        }
+      });
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("Falha ao autenticar com o backend.");
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log("Usuário autenticado:", data);
+      // Redirecionar após sucesso completo
+      window.location.href = "home.html";
+    })
+    .catch(error => {
+      console.error("Erro ao logar:", error);
+      status.textContent = "Erro: " + error.message;
+      status.className = "text-red-600 mt-4 text-sm";
+    });
 }
 
 function logout() {
