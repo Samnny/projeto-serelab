@@ -99,7 +99,7 @@ firebase login
   npm run build
   ```
 
-##### 1. Autenticar no Firebase CLI (se ainda não o fez):
+##### 2. Autenticar no Firebase CLI (se ainda não o fez):
 
 ```bash
 firebase deploy
