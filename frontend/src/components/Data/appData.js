@@ -1,5 +1,5 @@
-import CardData from './CardData'; // Ajuste o caminho se as classes estiverem em outro lugar
-import Category from './Category'; // Ajuste o caminho se as classes estiverem em outro lugar
+import CardData from './CardData'; 
+import Category from './Category'; 
 
 // --- CATEGORIES ---
 const categoriesList = [
