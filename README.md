@@ -92,12 +92,12 @@ Este projeto utiliza o Firebase para:
 firebase login
 ```
 
-###### 1.1. Gerar a Build de Produção:
-Este comando compila e otimiza sua aplicação React para o ambiente de produção, gerando os arquivos estáticos na pasta **dist/**.
+  ##### 1.1. Gerar a Build de Produção:
+  Este comando compila e otimiza sua aplicação React para o ambiente de produção, gerando os arquivos estáticos na pasta **dist/**.
 
-```bash
-npm run build
-```
+  ```bash
+  npm run build
+  ```
 
 ##### 1. Autenticar no Firebase CLI (se ainda não o fez):
 
