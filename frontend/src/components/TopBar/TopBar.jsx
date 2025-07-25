@@ -9,10 +9,16 @@ import { Link } from 'react-router-dom';
  */
 function Topbar({ navTo, navText }) {
   return (
-    <div className="w-full backdrop-blur-sm py-6 text-white px-4 md:px-16 flex justify-between items-center mb-10">
-      <h1 className="text-4xl font-bold">JOURNEY</h1>
+    <div className="w-full bg-[url('src/assets/bg_journey.svg')] py-1.5 text-white px-4 md:px-16 flex justify-between items-center">
+      <img src="src/assets/logo_journey.svg" alt="" />
       {/* O Link do React Router para navegação */}
       <Link to={navTo} className="text-base md:text-lg text-right">
+        {navText}
+      </Link>
+       <Link to={navTo} className="text-base md:text-lg text-right">
+        {navText}
+      </Link>
+       <Link to={navTo} className="text-base md:text-lg text-right">
         {navText}
       </Link>
     </div>
