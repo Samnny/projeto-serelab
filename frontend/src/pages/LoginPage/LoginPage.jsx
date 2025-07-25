@@ -25,7 +25,7 @@ function LoginPage() {
 
     if (result.success) {
       setStatusMessage({ text: result.message, type: 'success' });
-      setTimeout(() => navigate('/'), 2000); // Exemplo: redirecionar para o dashboard
+      setTimeout(() => navigate('/home'), 2000); // Exemplo: redirecionar para o dashboard
     } else {
       setStatusMessage({ text: result.message, type: 'error' });
     }
