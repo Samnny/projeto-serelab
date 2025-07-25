@@ -2,6 +2,8 @@ import React, { useState, useMemo } from 'react';
 import Card from '../../components/Cards/Card.jsx'; 
 import { cardsList, categoriesList } from '../../components/Data/appData';
 import Topbar from '../../components/Topbar/Topbar.jsx';
+import Menu from '../../components/menu/menu.jsx';
+import "../../style.css";
 
 const ITEMS_PER_PAGE = 8; 
 
@@ -43,49 +45,50 @@ const ListCardsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-green-100">
+    <div className="min-h-screen bg-bg">
       <Topbar navTo="/" navText="Voltar para o Início" />
-
+      <Menu/>
       <div className="container mx-auto px-4 mt-8">
-        <h1 className="text-4xl font-bold text-gray-800 mb-2">Cartas Educativas</h1>
-        <p className="text-gray-600 mb-6 max-w-2xl">
-          Aqui ficará um breve texto sobre a descrição das cartas educativas, qual o objetivo delas, como você pode interagir com elas e que tipo de informação elas contém. Manter a quebra de duas linhas.
-        </p>
-
-        <div className="flex flex-wrap items-center justify-between gap-4 mb-8 p-4 bg-white rounded-lg shadow-sm">
-          <span className="text-gray-700 font-medium">Filtrar por:</span>
-          <div className="flex items-center gap-3">
-            <button
-              className={`px-4 py-2 rounded-full text-sm font-medium ${filterStatus === 'nao-lidos' ? 'bg-indigo-500 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
-              onClick={() => setFilterStatus('nao-lidos')}
-            >
-              Não Lidos
-            </button>
-            <button
-              className={`px-4 py-2 rounded-full text-sm font-medium ${filterStatus === 'favoritos' ? 'bg-indigo-500 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
-              onClick={() => setFilterStatus('favoritos')}
-            >
-              Favoritos
-            </button>
-            <select
-              className="px-4 py-2 rounded-full text-sm font-medium bg-gray-200 text-gray-700 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-              value={filterCategory}
-              onChange={(e) => setFilterCategory(e.target.value)}
-            >
-              <option value="all">Fase</option>
-              {categoriesList.map(category => (
-                <option key={category.id} value={category.id}>
-                  {category.title}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="w-8 h-8 bg-purple-200 rounded-full flex items-center justify-center cursor-pointer">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-purple-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-          </div>
+        <div className="flex flex-col items-start md:flex-row md:items-center justify-between mb-4">
+            <h1 className="text-4xl text-forestGreen mb-2 font-black">Cartas Educativas</h1>
+            <div className="flex flex-wrap items-center justify-between gap-4">
+              <span className="text-gray-700 font-medium">Filtrar por:</span>
+              <div className="flex items-center gap-3">
+                <button
+                  className={`px-4 py-1 rounded-md text-sm font-medium ${filterStatus === 'nao-lidos' ? 'border text-white bg-gray-300' : 'border text-gray-700'}`}
+                  onClick={() => setFilterStatus('nao-lidos')}
+                >
+                  Não Lidos
+                </button>
+                <button
+                  className={`px-4 py-1 rounded-md text-sm font-medium ${filterStatus === 'favoritos' ? 'border text-white bg-gray-300' : 'border text-gray-700'}`}
+                  onClick={() => setFilterStatus('favoritos')}
+                >
+                  Favoritos
+                </button>
+                <select
+                  className="px-4 py-1 rounded-md text-sm font-medium text-gray-700 border focus:outline-none"
+                  value={filterCategory}
+                  onChange={(e) => setFilterCategory(e.target.value)}
+                >
+                  <option value="all">Fase</option>
+                  {categoriesList.map(category => (
+                    <option key={category.id} value={category.id}>
+                      {category.title}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="">
+                  <input type="text" placeholder='Pesquisar...' className="border rounded-md px-3 py-1"/>
+              </div>
+            </div>
         </div>
+        <p className="text-forestGreen mb-6 w-full">
+          Consulte os principais conceitos em que o Challenge Based Learning (CBL) se baseia, cada carta aborda um assunto das três fases da que compõem a metodologia o Engage, o Investigate e o Act, além de uma categoria geral que explica o CBL.        
+          </p>
+
+        
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {currentCards.length > 0 ? (
@@ -105,7 +108,7 @@ const ListCardsPage = () => {
           <button
             onClick={() => handlePageChange(currentPage - 1)}
             disabled={currentPage === 1}
-            className="px-4 py-2 bg-gray-200 rounded-lg text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-300"
+            className="px-4 py-2 bg-leafGreen clip-trapezoid text-white disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-300"
           >
             Anterior
           </button>
@@ -113,7 +116,7 @@ const ListCardsPage = () => {
             <button
               key={page}
               onClick={() => handlePageChange(page)}
-              className={`px-4 py-2 rounded-lg ${currentPage === page ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
+              className={`px-4 py-2 rounded-lg ${currentPage === page ? ' text-forestGreen' : 'text-forestGreen hover:bg-gray-300'}`}
             >
               {page}
             </button>
@@ -121,7 +124,7 @@ const ListCardsPage = () => {
           <button
             onClick={() => handlePageChange(currentPage + 1)}
             disabled={currentPage === totalPages}
-            className="px-4 py-2 bg-gray-200 rounded-lg text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-300"
+            className="px-2 py-2 bg-leafGreen clip-trapezoid text-white disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-300"
           >
             Próximo
           </button>
