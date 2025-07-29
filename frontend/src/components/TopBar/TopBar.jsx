@@ -7,20 +7,23 @@ import { Link } from 'react-router-dom';
  * @param {string} props.navTo - O caminho da rota para onde o link de navegação deve ir.
  * @param {string} props.navText - O texto a ser exibido no link de navegação.
  */
-function Topbar({ navTo, navText }) {
+function Topbar({ navTo, navTo2, navTo3, navText, navText2, navText3 }) {
   return (
-    <div className="w-full bg-[url('src/assets/bg_journey.svg')] py-1.5 text-white px-4 md:px-16 flex justify-between items-center">
-      <img src="src/assets/logo_journey.svg" alt="" />
+    <div className="w-full py-1.5 text-white px-4 md:px-16 flex justify-between items-center">
+      <img src="/assets/logo_journey.svg" alt="" />
       {/* O Link do React Router para navegação */}
-      <Link to={navTo} className="text-base md:text-lg text-right">
-        {navText}
-      </Link>
-       <Link to={navTo} className="text-base md:text-lg text-right">
-        {navText}
-      </Link>
-       <Link to={navTo} className="text-base md:text-lg text-right">
-        {navText}
-      </Link>
+      <div className='flex items-center justify-between gap-8'>
+          <Link to={navTo} className="text-base md:text-lg text-cream font-bold text-right">
+          {navText}
+          </Link>
+          <Link to={navTo2} className="bg-orangeAct text-cream px-4 py-2 rounded-md shadow-[4px_4px_0px_rgba(0,0,0,0.25)] text-base md:text-lg text-right">
+            {navText2}
+          </Link>
+          <Link to={navTo3} className="bg-cream text-forestGreen px-4 py-2 rounded-md shadow-[4px_4px_0px_rgba(0,0,0,0.25)] text-base md:text-lg text-right">
+            {navText3}
+          </Link>
+      </div>
+      
     </div>
   );
 }

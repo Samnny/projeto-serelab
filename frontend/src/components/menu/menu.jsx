@@ -12,7 +12,7 @@ function Menu() {
   };
 
   const links = [
-    { path: "/cards", label: "Cartas" },
+    { path: "/home", label: "Cartas" },
     { path: "/diagram", label: "Diagrama" },
     { path: "/sucess", label: "Casos de Sucesso" },
     { path: "/history", label: "História" },

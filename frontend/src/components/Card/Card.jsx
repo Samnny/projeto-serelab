@@ -1,4 +1,3 @@
-// src/components/Card/Card.jsx
 import React from 'react';
 
   const Card = ({ cardData, category }) => {
@@ -6,7 +5,7 @@ import React from 'react';
       return null;
     }
 
-    const { title, textContent, image } = cardData;
+    const { title, textContent, icon, image } = cardData;
     const { primaryColor } = category;
 
     const categoryColors = {
@@ -41,15 +40,15 @@ import React from 'react';
         }}
       >
         {/* Botão da categoria */}
-        <span className={`absolute top-2 right-2 bg-${category.primaryColor} text-white text-xs font-semibold px-3 py-1 rounded-full`}>
-          {category.name}
-        </span>
+        {/* <span className={`absolute top-2 right-2 bg-${primaryColor} text-white text-xs font-semibold px-3 py-1 rounded-full`}>
+          {category.title}
+        </span> */}
 
         {/* Ícone */}
         <img
-          src={image || "/placeholder-question.svg"}
+          src={icon || "/assets/bg-card.svg"}
           alt="Ícone da carta"
-          className="w-16 h-16"
+          className="w-64 h-64"
           style={{
             filter: `drop-shadow(0 0 2px rgba(0,0,0,0.2))`,
           }}
@@ -58,7 +57,7 @@ import React from 'react';
 
       {/* Conteúdo do card */}
       <div className="p-5 flex flex-col justify-between flex-grow">
-        <h2 className={`text-lg font-bold mb-2 text-${category.primaryColor}`}>
+        <h2 className={`text-lg font-bold mb-2 text-${primaryColor}`}>
           {title}
         </h2>
 

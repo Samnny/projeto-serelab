@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../hooks/useAuth';
 import { useNavigate, Link } from 'react-router-dom';
-import Topbar from '../../components/Topbar/Topbar'; // Importa o componente Topbar
+import TopbarBg from '../../components/TopbarBg/TobBarBg.jsx'; // Importa o componente Topbar
 
 function LoginPage() {
   const { login, loadingAuth } = useAuth();
@@ -25,7 +25,7 @@ function LoginPage() {
 
     if (result.success) {
       setStatusMessage({ text: result.message, type: 'success' });
-      setTimeout(() => navigate('/'), 2000); // Exemplo: redirecionar para o dashboard
+      setTimeout(() => navigate('/home'), 2000); // Exemplo: redirecionar para o dashboard
     } else {
       setStatusMessage({ text: result.message, type: 'error' });
     }
@@ -35,7 +35,7 @@ function LoginPage() {
     // Aplica o background e layout flex do body do seu HTML
     <div className="bg-[url('/assets/login_bg.svg')] bg-cover bg-center flex flex-col min-h-screen">
       {/* Topbar para a página de Login, com link para Cadastre-se */}
-      <Topbar navTo="/register" navText="CADASTRE-SE" />
+      <TopbarBg navTo="/register" />
 
       {/* Conteúdo principal com a imagem e o formulário flutuante */}
       <div className="relative px-4 md:px-16 py-4 flex-grow flex justify-start items-center">

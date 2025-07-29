@@ -1,13 +1,13 @@
 import React, { useState, useMemo } from 'react';
-import Card from '../../components/Cards/Card.jsx'; 
-import { cardsList, categoriesList } from '../../components/Data/appData';
+import Card from '../../components/Card/Card.jsx'; 
+import { cardsList, categoriesList } from '../../components/Data/appData.js';
 import Topbar from '../../components/Topbar/Topbar.jsx';
 import Menu from '../../components/menu/menu.jsx';
 import "../../style.css";
 
 const ITEMS_PER_PAGE = 8; 
 
-const ListCardsPage = () => { 
+const InitialPage = () => { 
   const [currentPage, setCurrentPage] = useState(1);
   const [filterCategory, setFilterCategory] = useState('all');
   const [filterStatus, setFilterStatus] = useState('all');
@@ -138,4 +138,4 @@ const ListCardsPage = () => {
   );
 };
 
-export default ListCardsPage;
+export default InitialPage;

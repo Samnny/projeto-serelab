@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../hooks/useAuth'; // Importa o hook de autenticação
 import { useNavigate, Link } from 'react-router-dom'; // Para redirecionar e linkar
-import Topbar from '../../components/Topbar/Topbar'; // Importa o componente Topbar
+import TopBarBg from '../../components/TopbarBg/TobBarBg.jsx'; // Importa o componente Topbar
 
 function RegisterPage() {
   const { register, loadingAuth } = useAuth(); // Pega a função register e o status de loading do hook
@@ -39,11 +39,11 @@ function RegisterPage() {
     // Aplica o background e layout flex do body do seu HTML
     <div className="bg-[url('/assets/login_bg.svg')] bg-cover bg-center flex flex-col min-h-screen">
       {/* Topbar para a página de Cadastro, com link para Login */}
-      <Topbar navTo="/login" navText="LOGIN" />
+      <TopBarBg navTo="/login" />
 
       {/* Conteúdo principal */}
-      <div className="flex flex-col items-center justify-center flex-grow px-4 md:px-16">
-        <div className="bg-white rounded-lg shadow-xl p-8 max-w-md w-full">
+      <div className="flex flex-col items-center justify-center  flex-grow px-4 md:px-16">
+        <div className="bg-white rounded-lg shadow-xl my-12 p-8 max-w-md w-full">
 
           <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Cadastro</h2>
 
