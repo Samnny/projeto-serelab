@@ -1,9 +1,9 @@
 import React, { useState, useMemo } from 'react';
 import Card from '../../components/Card/Card.jsx'; 
 import { cardsList, categoriesList } from '../../components/Data/appData.js';
-import Topbar from '../../components/Topbar/Topbar.jsx';
 import Menu from '../../components/menu/menu.jsx';
 import "../../style.css";
+import TopbarBg from '../../components/TopbarBg/TobBarBg.jsx';
 
 const ITEMS_PER_PAGE = 8; 
 
@@ -46,7 +46,7 @@ const InitialPage = () => {
 
   return (
     <div className="min-h-screen bg-bg">
-      <Topbar navTo="/" navText="Voltar para o Início" />
+      <TopbarBg />
       <Menu/>
       <div className="container mx-auto px-4 mt-8">
         <div className="flex flex-col items-start md:flex-row md:items-center justify-between mb-4">

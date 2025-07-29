@@ -1,8 +1,9 @@
 class Category {
-  constructor(id, title, primaryColor, secondColor, description) {
+  constructor(id, title, tailwindColor, hexColor, secondColor, description) {
     this.id = id;
     this.title = title;
-    this.primaryColor = primaryColor;
+    this.tailwindColor = tailwindColor;
+    this.hexColor = hexColor;
     this.secondColor = secondColor;
     this.description = description;
   }

@@ -3,9 +3,9 @@ import Category from './Category';
 
 // --- CATEGORIES ---
 const categoriesList = [
-  new Category(0, "Engage", "purpleEngage", "#DBD1EB", "A fase de Engage é onde os alunos são introduzidos ao tema e começam a."),
-  new Category(1, "Investigate", "blueInvestigate", "#D9EFF5", "A fase de Investigate é onde os alunos exploram o tópico profundamente."),
-  new Category(2, "Act", "orangeAct", "#FADECB", "A fase de Act é onde os alunos aplicam seus conhecimentos em projetos práticos.")
+  new Category(0, "Engage", "purpleEngage", "#A47DD0", "#DBD1EB", "A fase de Engage é onde os alunos são introduzidos ao tema e começam a."),
+  new Category(1, "Investigate", "blueInvestigate", "#55BCDF", "#D9EFF5", "A fase de Investigate é onde os alunos exploram o tópico profundamente."),
+  new Category(2, "Act", "orangeAct", "#F3845C", "#FADECB", "A fase de Act é onde os alunos aplicam seus conhecimentos em projetos práticos.")
 ];
 
 // --- CARDS ---

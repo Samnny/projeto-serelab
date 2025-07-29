@@ -14,8 +14,7 @@ function HomePage() {
 
   return (
     <div className="bg-[url('/assets/home_img/BG.svg')] bg-leafGreen bg-cover bg-center flex flex-col min-h-screen">
-      <Topbar navTo="/" navto2="/register" navTo3="/login" navText="Como funciona" navText2="Cadastre-se" navText3="Login" />
-      
+      <Topbar navTo1="#comoFunciona" navTo2="/register" navTo3="/login" navText1="Como funciona" navText2="Cadastre-se" navText3="Login" />
 
       <div className="flex flex-col items-center gap-12 justify-center flex-grow pl-4 md:pl-16">
           <div className="flex items-center justify-between py-12 relative w-full">
@@ -59,7 +58,7 @@ function HomePage() {
                 </p>
               </div>
           </div>
-          <div className='pr-4 md:pr-16'>
+          <div className='pr-4 md:pr-16' id="comoFunciona">
             <div className='flex justify-center items-center mb-24'>
               <img src="/assets/home_img/Frame 321.svg" alt="" className='w-[400px'/>
             </div>
@@ -107,7 +106,7 @@ function HomePage() {
             <p className='text-bg_color font-extrabold text-5xl text-center leading-loose mb-12'>
               Está pronto para <br /> começar a jornada?
             </p>
-            <a className='bg-bg_color text-forestGreen text-xl rounded-full shadow-[2px_4px_0px_rgba(0,0,0,0.25)] px-6 py-4 font-medium' href="">Inicie o desafio</a>
+            <a className='bg-bg_color text-forestGreen text-xl rounded-full shadow-[2px_4px_0px_rgba(0,0,0,0.25)] px-6 py-4 font-medium' href="/home">Inicie o desafio</a>
           </div>
       </div>
       <Footer />

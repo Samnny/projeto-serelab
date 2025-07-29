@@ -1,10 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    "./index.html", 
-    "./src/**/*.{js,ts,jsx,tsx}", 
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
   ],
-   theme: {
+  theme: {
     extend: {
       fontFamily: {
         sans: ['Poppins', 'sans-serif'],
@@ -28,5 +28,13 @@ export default {
       },
     },
   },
+  safelist: [
+    'text-purpleEngage',
+    'text-blueInvestigate',
+    'text-orangeAct',
+    'bg-purpleEngage',
+    'bg-blueInvestigate',
+    'bg-orangeAct',
+  ],
   plugins: [],
 }

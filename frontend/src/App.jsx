@@ -2,22 +2,27 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage/HomePage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
-// import ForgotPasswordPage from './pages/ForgotPasswordPage/ForgotPasswordPage';
 import InitialPage from './pages/InitialPage/InitialPage';
-// import CardDetailPage from './pages/CardDetailPage/CardDetailPage';
-// import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
-
+import CardDetailPage from './pages/CardDetailPage/CardDetailPage';
+import ProtectedRoute from '../src/components/ProtectedRoute/ProtectedRoute';
 
 function App() {
   return (
     <Routes>
+      {/* Rotas Públicas (acessíveis sem login) */}
       <Route path="/" element={<HomePage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
-      <Route path="/home" element={<InitialPage />} />
-      {/* <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+
+      {/* Rotas Protegidas (exigem login) */}
+      {/* Envolve as rotas que você quer proteger com ProtectedRoute */}
+      <Route element={<ProtectedRoute />}>
+        <Route path="/home" element={<InitialPage />} />
         <Route path="/cards/:id" element={<CardDetailPage />} />
-        <Route path="*" element={<NotFoundPage />} /> Rota para 404 */}
+      </Route>
+
+      {/* Opcional: Rota para 404 (página não encontrada) */}
+      {/* <Route path="*" element={<NotFoundPage />} /> */}
     </Routes>
   );
 }

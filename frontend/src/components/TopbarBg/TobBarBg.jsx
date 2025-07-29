@@ -10,7 +10,9 @@ import { Link } from 'react-router-dom';
 function TopbarBg({ navTo, navTo2, navTo3, navText, navText2, navText3 }) {
   return (
     <div className="w-full bg-[url('/assets/bg_journey.svg')] py-1.5 text-white px-4 md:px-16 flex justify-between items-center">
-     <img src="/assets/logo_journey.svg" alt="" />
+      <Link to="/">
+        <img src="/assets/logo_journey.svg" alt="Logo Journey" />
+      </Link>
       {/* O Link do React Router para navegação */}
       <Link to={navTo} className="text-base md:text-lg text-right">
         {navText}

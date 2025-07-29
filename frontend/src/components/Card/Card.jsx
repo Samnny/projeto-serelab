@@ -1,31 +1,37 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-  const Card = ({ cardData, category }) => {
-    if (!cardData || !category) {
-      return null;
-    }
+const Card = ({ cardData, category }) => {
+  const navigate = useNavigate();
 
-    const { title, textContent, icon, image } = cardData;
-    const { primaryColor } = category;
+  if (!cardData || !category) {
+    return null;
+  }
 
-    const categoryColors = {
-    Engage: {
-      name: 'Engage',
-      tailwind: 'purpleEngage',
-      bg: '#EADBF5', // usado no SVG, cor clara
-    },
-    Investigate: {
-      name: 'Investigate',
-      tailwind: 'blueInvestigate',
-      bg: '#D7EFF9',
-    },
-    Act: {
-      name: 'Act',
-      tailwind: 'orangeAct',
-      bg: '#FFE5DA',
-    },
+  const { title, textContent, icon, image } = cardData;
+  const { tailwindColor } = category;
+
+  // const categoryColors = {
+  //   Engage: {
+  //     name: 'Engage',
+  //     tailwind: 'purpleEngage',
+  //     bg: '#EADBF5', // usado no SVG, cor clara
+  //   },
+  //   Investigate: {
+  //     name: 'Investigate',
+  //     tailwind: 'blueInvestigate',
+  //     bg: '#D7EFF9',
+  //   },
+  //   Act: {
+  //     name: 'Act',
+  //     tailwind: 'orangeAct',
+  //     bg: '#FFE5DA',
+  //   },
+  // };
+
+  const handleViewMore = () => {
+    navigate(`/cards/${cardData.id}`);
   };
-
 
   return (
     <div className="w-[300px] rounded-2xl shadow-md overflow-hidden bg-white flex flex-col border border-gray-200">
@@ -40,15 +46,15 @@ import React from 'react';
         }}
       >
         {/* Botão da categoria */}
-        {/* <span className={`absolute top-2 right-2 bg-${primaryColor} text-white text-xs font-semibold px-3 py-1 rounded-full`}>
+        <span className={`absolute top-2 right-2 bg-${tailwindColor} text-white text-xs font-semibold px-3 py-1 rounded-md`} style={{ backgroundColor: tailwindColor }}>
           {category.title}
-        </span> */}
+        </span>
 
         {/* Ícone */}
         <img
           src={icon || "/assets/bg-card.svg"}
           alt="Ícone da carta"
-          className="w-64 h-64"
+          className="w-32 h-32"
           style={{
             filter: `drop-shadow(0 0 2px rgba(0,0,0,0.2))`,
           }}
@@ -57,7 +63,7 @@ import React from 'react';
 
       {/* Conteúdo do card */}
       <div className="p-5 flex flex-col justify-between flex-grow">
-        <h2 className={`text-lg font-bold mb-2 text-${primaryColor}`}>
+        <h2 className={`text-lg font-bold mb-2 text-${tailwindColor}`} style={{ color: tailwindColor }}>
           {title}
         </h2>
 
@@ -68,16 +74,46 @@ import React from 'react';
         {/* Rodapé */}
         <div className="flex justify-between items-center border-t pt-3">
           <div className="flex gap-3">
-            <svg className="h-5 w-5 text-red-500 opacity-80 hover:opacity-100" />
-            <svg className="h-5 w-5 text-blue-600 opacity-80 hover:opacity-100" />
+            {/* Ícone de Coração (Favoritar) */}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className={`h-5 w-5 text-${tailwindColor} opacity-80 hover:opacity-100 cursor-pointer`}
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+            </svg>
+
+            {/* Ícone de Alvo/Olho (Visualizar/Lido) */}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className={`h-5 w-5 text-${tailwindColor} opacity-80 hover:opacity-100 cursor-pointer`}
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M1 12s4-8 11-8s11 8 11 8s-4 8-11 8s-11-8-11-8z" />
+              <circle cx="12" cy="12" r="3" />
+            </svg>
           </div>
-          <a href="#" className="text-sm font-medium text-indigo-500 hover:text-indigo-700 flex items-center">
+
+          {/* Botão "Ver mais" */}
+          <button
+            onClick={handleViewMore}
+            className={`text-sm font-medium text-${tailwindColor} hover:font-bold flex items-center cursor-pointer bg-transparent border-none p-0`}
+          >
             Ver mais <span className="ml-1">→</span>
-          </a>
+          </button>
         </div>
       </div>
-    </div>
-
+    </div >
   );
 };
 
