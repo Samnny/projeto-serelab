@@ -34,10 +34,10 @@ const Card = ({ cardData, category }) => {
   };
 
   return (
-    <div className="w-[300px] rounded-2xl shadow-md overflow-hidden bg-white flex flex-col border border-gray-200">
+    <div className="w-[300px] rounded-2xl shadow-[4px_4px_0px_rgba(0,0,0,0.25)] overflow-hidden bg-white flex flex-col border border-gray-200">
       {/* Header com SVG de fundo */}
       <div
-        className="relative p-6 h-[140px] flex justify-center items-center"
+        className="relative h-[140px] flex justify-center items-center"
         style={{
           backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='150' viewBox='0 0 200 150'><path d='M0,75 C50,25 150,25 200,75 C150,125 50,125 0,75 Z' fill='${encodeURIComponent(category.secondColor)}' opacity='0.4'/><path d='M0,25 C50,-25 150,-25 200,25 C150,75 50,75 0,25 Z' fill='${encodeURIComponent(category.secondColor)}' opacity='0.4'/></svg>")`,
           backgroundRepeat: 'no-repeat',
@@ -46,7 +46,7 @@ const Card = ({ cardData, category }) => {
         }}
       >
         {/* Botão da categoria */}
-        <span className={`absolute top-2 right-2 bg-${tailwindColor} text-white text-xs font-semibold px-3 py-1 rounded-md`} style={{ backgroundColor: tailwindColor }}>
+        <span className={`absolute top-2 right-2 z-10 bg-${tailwindColor} text-white text-xs font-semibold px-3 py-1 rounded-md`} style={{ backgroundColor: tailwindColor }}>
           {category.title}
         </span>
 
@@ -54,16 +54,16 @@ const Card = ({ cardData, category }) => {
         <img
           src={icon || "/assets/bg-card.svg"}
           alt="Ícone da carta"
-          className="w-32 h-32"
+          className="w-full object-cover"
           style={{
-            filter: `drop-shadow(0 0 2px rgba(0,0,0,0.2))`,
+            
           }}
         />
       </div>
 
       {/* Conteúdo do card */}
-      <div className="p-5 flex flex-col justify-between flex-grow">
-        <h2 className={`text-lg font-bold mb-2 text-${tailwindColor}`} style={{ color: tailwindColor }}>
+      <div className="p-5 flex flex-col justify-mt-2 between flex-grow">
+        <h2 className={`text-lg font-bold mb-2 mt-4 text-${tailwindColor}`} style={{ color: tailwindColor }}>
           {title}
         </h2>
 

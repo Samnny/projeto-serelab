@@ -21,4 +21,28 @@
     );
     display: inline-block;
   }
+   .clip-trapezoid2 {
+    clip-path: polygon(
+    2% 10%, 
+    50% 0%,   /* canto superior esquerdo levemente para baixo */
+    99% 30%,  /* canto superior direito reto */
+    97% 97%,
+    90% 100%,
+    60% 100%, /* canto inferior direito um pouco mais alto */
+    1% 80%   /* canto inferior esquerdo reto */
+  );
+    display: inline-block;
+  }
+   .clip-trapezoid3 {
+    clip-path: polygon(
+    20% 15%,
+    75% 0%,
+    100% 60%,
+    75% 100%,
+    25% 100%,
+    0% 60%
+  );
+    display: inline-block;
+  }
+  
 }

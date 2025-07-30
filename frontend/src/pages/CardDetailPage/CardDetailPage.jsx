@@ -5,6 +5,7 @@ import { cardsList, categoriesList } from '../../components/Data/appData.js';
 import Menu from '../../components/menu/menu.jsx';
 import TopbarBg from '../../components/TopbarBg/TobBarBg.jsx';
 import "../../style.css";
+import Footer from '../../components/footer/footer.jsx';
 
 const CardDetailPage = () => {
   const { id } = useParams();
@@ -61,25 +62,14 @@ const CardDetailPage = () => {
     <div className="min-h-screen bg-gray-50 font-sans">
       <TopbarBg />
 
-      <div className="container mx-auto px-4 mt-8 flex flex-col lg:flex-row gap-8">
+      <div className="container mx-auto px-4 mt-8 flex flex-col lg:flex-row gap-8 mb-12">
         {/* Área de Conteúdo Principal do Card */}
         <div className="lg:w-2/3 bg-white rounded-lg shadow-md p-6">
-          <div className="flex items-center justify-between mb-6">
-            <div className="flex items-center">
-              {/* Ícone dinâmico do card */}
-              <div className={`w-10 h-10 rounded-full flex items-center justify-center ${cardData.categoryData.tailwindColor} mr-3`}>
-                {cardData.icon && (
-                  <img src={cardData.icon} alt="Ícone da carta" className="w-6 h-6 text-white" />
-                )}
-                {!cardData.icon && ( // Fallback SVG se não houver ícone
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.228 9.228a.75.75 0 000 1.06L9.69 11.69a.75.75 0 001.06 0l1.462-1.462a.75.75 0 000-1.06L10.75 8.25a.75.75 0 00-1.06 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9.75a.75.75 0 000 1.06l1.462 1.462a.75.75 0 001.06 0l1.462-1.462a.75.75 0 000-1.06L17.25 8.25a.75.75 0 00-1.06 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 21.75a9.75 9.75 0 100-19.5 9.75 9.75 0 000 19.5z" />
-                  </svg>
-                )}
-              </div>
-              {/* Título dinâmico do card */}
+          <div className="flex items-center mb-6">
+            <div className={`w-20 h-16 clip-trapezoid3 drop-shadow-[4px_4px_0px_rgba(0,0,0,0.25)] bg-${cardData.categoryData.tailwindColor} flex items-center justify-center ${cardData.categoryData.tailwindColor} mr-3`}>
+                <img src="/assets/Vector.svg" alt="" />
+            </div>
+            <div className={`flex -ml-10 items-center bg-opacity-15 mt-2 w-full py-3 px-10 clip-trapezoid2 bg-${cardData.categoryData.tailwindColor}`}>
               <h1 className={`text-3xl font-black text-${cardData.categoryData.tailwindColor}`}>{cardData.title.replace('\n', ' ')}</h1>
             </div>
             {/* Botão de categoria dinâmico */}
@@ -102,20 +92,11 @@ const CardDetailPage = () => {
           </div>
 
           {/* Imagem/Diagrama dinâmico */}
-          <div className="w-full h-48 bg-gray-200 rounded-md flex items-center justify-center text-gray-500 mb-6">
-            {cardData.image ? (
-              <img src={cardData.image} alt="Diagrama ou Imagem da Carta" className="max-w-full max-h-full object-contain rounded-md" />
-            ) : (
-              <>
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-                <span className="ml-2">Placeholder para Diagrama/Imagem</span>
-              </>
-            )}
+          <div className="w-full h-48 rounded-md flex items-center mt-6 justify-center text-gray-500 mb-6">
+            <img src="/assets/Group 18.svg" className='mt-16 w-[800px]' alt="" />
           </div>
 
-          <p className="text-gray-700 leading-relaxed mb-4">
+          <p className="text-gray-700 leading-relaxed mb-4 mt-20">
             Aqui estão alguns exemplos de aplicação do conceito:
           </p>
           <ul className={`list-disc list-inside text-gray-700 ml-4 color-${cardData.categoryData.tailwindColor}`} style={{ '--marker-color': markerColor }}>
@@ -208,9 +189,7 @@ const CardDetailPage = () => {
         </div>
       </div>
 
-      <div className="mt-16 py-4 text-center text-gray-600 text-sm">
-        Todos os Direitos Reservados - Equipe Serolab 2025
-      </div>
+      <Footer />
     </div >
   );
 };

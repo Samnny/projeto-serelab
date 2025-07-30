@@ -4,6 +4,7 @@ import { cardsList, categoriesList } from '../../components/Data/appData.js';
 import Menu from '../../components/menu/menu.jsx';
 import "../../style.css";
 import TopbarBg from '../../components/TopbarBg/TobBarBg.jsx';
+import Footer from '../../components/footer/footer.jsx';
 
 const ITEMS_PER_PAGE = 8; 
 
@@ -90,7 +91,7 @@ const InitialPage = () => {
 
         
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
           {currentCards.length > 0 ? (
             currentCards.map((card) => (
               <Card
@@ -104,7 +105,7 @@ const InitialPage = () => {
           )}
         </div>
 
-        <div className="flex justify-center items-center mt-10 space-x-2">
+        <div className="flex justify-center items-center mt-10  mb-12 space-x-2">
           <button
             onClick={() => handlePageChange(currentPage - 1)}
             disabled={currentPage === 1}
@@ -129,11 +130,8 @@ const InitialPage = () => {
             Próximo
           </button>
         </div>
-
-        <div className="mt-16 py-4 text-center text-gray-600 text-sm">
-          Todos os Direitos Reservados - Equipe Serolab 2025
-        </div>
       </div>
+      <Footer />
     </div>
   );
 };
