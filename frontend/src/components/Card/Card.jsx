@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Card = ({ cardData, category }) => {
+const Card = ({ cardData, category, onToggleFavorite, onToggleRead }) => {
   const navigate = useNavigate();
 
   if (!cardData || !category) {
@@ -11,26 +11,22 @@ const Card = ({ cardData, category }) => {
   const { title, textContent, icon, image } = cardData;
   const { tailwindColor } = category;
 
-  // const categoryColors = {
-  //   Engage: {
-  //     name: 'Engage',
-  //     tailwind: 'purpleEngage',
-  //     bg: '#EADBF5', // usado no SVG, cor clara
-  //   },
-  //   Investigate: {
-  //     name: 'Investigate',
-  //     tailwind: 'blueInvestigate',
-  //     bg: '#D7EFF9',
-  //   },
-  //   Act: {
-  //     name: 'Act',
-  //     tailwind: 'orangeAct',
-  //     bg: '#FFE5DA',
-  //   },
-  // };
-
   const handleViewMore = () => {
     navigate(`/cards/${cardData.id}`);
+  };
+
+  const isFavorite = cardData.isFavorite;
+  const isRead = cardData.isRead;
+
+  // Funções para lidar com o clique nos ícones
+  const handleFavoriteClick = (e) => {
+    e.stopPropagation();
+    onToggleFavorite(cardData.id);
+  };
+
+  const handleReadClick = (e) => {
+    e.stopPropagation();
+    onToggleRead(cardData.id);
   };
 
   return (
@@ -56,7 +52,7 @@ const Card = ({ cardData, category }) => {
           alt="Ícone da carta"
           className="w-full object-cover"
           style={{
-            
+
           }}
         />
       </div>
@@ -75,33 +71,53 @@ const Card = ({ cardData, category }) => {
         <div className="flex justify-between items-center border-t pt-3">
           <div className="flex gap-3">
             {/* Ícone de Coração (Favoritar) */}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className={`h-5 w-5 text-${tailwindColor} opacity-80 hover:opacity-100 cursor-pointer`}
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+            <button
+              onClick={handleFavoriteClick}
+              className={`p-2 rounded-full transition-colors duration-200 border ${isFavorite
+                ? `bg-${tailwindColor} text-white border border-${tailwindColor}`
+                : `bg-transparent border-${tailwindColor} text-${tailwindColor} hover:fill-${tailwindColor}`
+                }`}
+              aria-label={isFavorite ? 'Desfavoritar' : 'Favoritar'}
             >
-              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-            </svg>
+              {/* SVG do Coração - Preenchido quando favorito */}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill={isFavorite ? 'currentColor' : 'none'}
+                stroke={isFavorite ? 'none' : 'currentColor'}
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="w-5 h-5"
+              >
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+              </svg>
+            </button>
 
             {/* Ícone de Alvo/Olho (Visualizar/Lido) */}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className={`h-5 w-5 text-${tailwindColor} opacity-80 hover:opacity-100 cursor-pointer`}
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+            <button
+              onClick={handleReadClick}
+              className={`p-2 rounded-full transition-colors duration-200 border ${isRead
+                ? `bg-${tailwindColor} text-white border border-${tailwindColor}`
+                : `bg-transparent border-${tailwindColor} text-${tailwindColor} hover:fill-${tailwindColor}`
+                }`}
+              aria-label={isRead ? 'Desfavoritar' : 'Favoritar'}
             >
-              <path d="M1 12s4-8 11-8s11 8 11 8s-4 8-11 8s-11-8-11-8z" />
-              <circle cx="12" cy="12" r="3" />
-            </svg>
+              {/* SVG do Coração - Preenchido quando favorito */}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill='none'
+                stroke='currentColor'
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="w-5 h-5"
+              >
+                <path d="M1 12s4-8 11-8s11 8 11 8s-4 8-11 8s-11-8-11-8z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+            </button>
           </div>
 
           {/* Botão "Ver mais" */}

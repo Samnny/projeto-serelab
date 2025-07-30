@@ -14,8 +14,8 @@ function Menu() {
   const links = [
     { path: "/home", label: "Cartas" },
     { path: "/diagram", label: "Diagrama" },
-    { path: "/sucess", label: "Casos de Sucesso" },
-    { path: "/history", label: "História" },
+    { path: "/success-cases", label: "Casos de Sucesso" },
+    { path: "/storytelling", label: "História" },
   ];
 
   return (

@@ -16,15 +16,39 @@ function Footer() {
             <ul className="space-y-3">
               <li className="flex items-center gap-2">
                 <FaLinkedin className="text-forestGreen text-2xl" />
-                <span>Gabriel Albuquerque</span>
+                {/* Link para o LinkedIn de Gabriel Albuquerque */}
+                <a
+                  href="https://www.linkedin.com/in/gabriel-albuqq"
+                  target="_blank" // Abre em uma nova aba
+                  rel="noopener noreferrer" // Boa prática de segurança para target="_blank"
+                  className="hover:underline text-blackCustom" // Adiciona sublinhado ao passar o mouse e mantém a cor do texto
+                >
+                  Gabriel Albuquerque
+                </a>
               </li>
               <li className="flex items-center gap-2">
                 <FaLinkedin className="text-forestGreen text-2xl" />
-                <span>Clara Oliveira</span>
+                {/* Link para o LinkedIn de Clara Oliveira */}
+                <a
+                  href="https://www.linkedin.com/in/maria-clara-de-oliveira-alexandre-173ba8245/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline text-blackCustom"
+                >
+                  Clara Oliveira
+                </a>
               </li>
               <li className="flex items-center gap-2">
                 <FaLinkedin className="text-forestGreen text-2xl" />
-                <span>Letícia Nepomuceno</span>
+                {/* Link para o LinkedIn de Letícia Nepomuceno */}
+                <a
+                  href="https://www.linkedin.com/in/let%C3%ADcia-nepomuceno-b1536b22a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline text-blackCustom"
+                >
+                  Letícia Nepomuceno
+                </a>
               </li>
             </ul>
           </div>
@@ -33,15 +57,39 @@ function Footer() {
             <ul className="space-y-3">
               <li className="flex items-center gap-2">
                 <FaLinkedin className="text-forestGreen text-2xl" />
-                <span>Edmara Rocha</span>
+                {/* Link para o LinkedIn de Edmara Rocha */}
+                <a
+                  href="https://www.linkedin.com/in/edmarar/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline text-blackCustom"
+                >
+                  Edmara Rocha
+                </a>
               </li>
               <li className="flex items-center gap-2">
                 <FaLinkedin className="text-forestGreen text-2xl" />
-                <span>Jamile Sales</span>
+                {/* Link para o LinkedIn de Jamile Sales */}
+                <a
+                  href="https://www.linkedin.com/in/jamile-sales?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline text-blackCustom"
+                >
+                  Jamile Sales
+                </a>
               </li>
               <li className="flex items-center gap-2">
-                <FaLinkedin className="text- text-2xl" />
-                <span>Samay Pessoa</span>
+                <FaLinkedin className="text-forestGreen text-2xl" />
+                {/* Link para o LinkedIn de Samay Pessoa */}
+                <a
+                  href="https://www.linkedin.com/in/samay-pessoa/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline text-blackCustom"
+                >
+                  Samay Pessoa
+                </a>
               </li>
             </ul>
           </div>
@@ -52,4 +100,3 @@ function Footer() {
 }
 
 export default Footer;
-
